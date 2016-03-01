@@ -17,7 +17,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self test3];
+    [self test4];
 }
 
 
@@ -25,11 +25,30 @@
 - (void) run:(NSString *) str
 {
     NSLog(@"%@",str);
-    for (int i=0; i<10; i++) {
+    for (int i=0; i<1000; i++) {
         NSLog(@"%s---%@",__func__,[NSThread currentThread]);
     }
 }
 
+
+
+#pragma 线程属性
+- (void) test4
+{
+    NSThread *threadA = [[NSThread alloc] initWithTarget:self selector:@selector(run:) object:@"threadA"];
+    threadA.name = @"thread A";
+    
+    // 线程优先级
+    // 是一个浮点数，0.0～1.0。 默认值 0.5
+    threadA.threadPriority = 1;
+    [threadA start];
+    
+    
+    NSThread *threadB = [[NSThread alloc] initWithTarget:self selector:@selector(run:) object:@"threadB"];
+    threadB.name = @"thread B";
+    threadB.threadPriority = 0.1;
+     [threadB start];
+}
 
 
 #pragma 线程创建的方式

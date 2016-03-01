@@ -1,0 +1,538 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BC7DABE1C8592F3006C823A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DABD1C8592F3006C823A /* main.m */; };
+		2BC7DAC11C8592F3006C823A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DAC01C8592F3006C823A /* AppDelegate.m */; };
+		2BC7DAC41C8592F3006C823A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DAC31C8592F3006C823A /* ViewController.m */; };
+		2BC7DAC71C8592F3006C823A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC7DAC51C8592F3006C823A /* Main.storyboard */; };
+		2BC7DACA1C8592F3006C823A /* _6_03_01_________________.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DAC81C8592F3006C823A /* _6_03_01_________________.xcdatamodeld */; };
+		2BC7DACC1C8592F3006C823A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BC7DACB1C8592F3006C823A /* Assets.xcassets */; };
+		2BC7DACF1C8592F3006C823A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC7DACD1C8592F3006C823A /* LaunchScreen.storyboard */; };
+		2BC7DADA1C8592F3006C823A /* _6_03_01_________________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DAD91C8592F3006C823A /* _6_03_01_________________Tests.m */; };
+		2BC7DAE51C8592F3006C823A /* _6_03_01_________________UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DAE41C8592F3006C823A /* _6_03_01_________________UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2BC7DAD61C8592F3006C823A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BC7DAB11C8592F3006C823A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BC7DAB81C8592F3006C823A;
+			remoteInfo = "16-03-01-(淬火)-多线程下的数据安全问题";
+		};
+		2BC7DAE11C8592F3006C823A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BC7DAB11C8592F3006C823A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BC7DAB81C8592F3006C823A;
+			remoteInfo = "16-03-01-(淬火)-多线程下的数据安全问题";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2BC7DAB91C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "16-03-01-(淬火)-多线程下的数据安全问题.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BC7DABD1C8592F3006C823A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2BC7DABF1C8592F3006C823A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2BC7DAC01C8592F3006C823A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2BC7DAC21C8592F3006C823A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2BC7DAC31C8592F3006C823A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2BC7DAC61C8592F3006C823A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BC7DAC91C8592F3006C823A /* _6_03_01_________________.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_6_03_01_________________.xcdatamodel"; sourceTree = "<group>"; };
+		2BC7DACB1C8592F3006C823A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BC7DACE1C8592F3006C823A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BC7DAD01C8592F3006C823A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BC7DAD51C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "16-03-01-(淬火)-多线程下的数据安全问题Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BC7DAD91C8592F3006C823A /* _6_03_01_________________Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_6_03_01_________________Tests.m"; sourceTree = "<group>"; };
+		2BC7DADB1C8592F3006C823A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BC7DAE01C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "16-03-01-(淬火)-多线程下的数据安全问题UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BC7DAE41C8592F3006C823A /* _6_03_01_________________UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_6_03_01_________________UITests.m"; sourceTree = "<group>"; };
+		2BC7DAE61C8592F3006C823A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BC7DAB61C8592F3006C823A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BC7DAD21C8592F3006C823A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BC7DADD1C8592F3006C823A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BC7DAB01C8592F3006C823A = {
+			isa = PBXGroup;
+			children = (
+				2BC7DABB1C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题 */,
+				2BC7DAD81C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题Tests */,
+				2BC7DAE31C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题UITests */,
+				2BC7DABA1C8592F3006C823A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BC7DABA1C8592F3006C823A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BC7DAB91C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题.app */,
+				2BC7DAD51C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题Tests.xctest */,
+				2BC7DAE01C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BC7DABB1C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题 */ = {
+			isa = PBXGroup;
+			children = (
+				2BC7DABF1C8592F3006C823A /* AppDelegate.h */,
+				2BC7DAC01C8592F3006C823A /* AppDelegate.m */,
+				2BC7DAC21C8592F3006C823A /* ViewController.h */,
+				2BC7DAC31C8592F3006C823A /* ViewController.m */,
+				2BC7DAC51C8592F3006C823A /* Main.storyboard */,
+				2BC7DACB1C8592F3006C823A /* Assets.xcassets */,
+				2BC7DACD1C8592F3006C823A /* LaunchScreen.storyboard */,
+				2BC7DAD01C8592F3006C823A /* Info.plist */,
+				2BC7DAC81C8592F3006C823A /* _6_03_01_________________.xcdatamodeld */,
+				2BC7DABC1C8592F3006C823A /* Supporting Files */,
+			);
+			path = "16-03-01-(淬火)-多线程下的数据安全问题";
+			sourceTree = "<group>";
+		};
+		2BC7DABC1C8592F3006C823A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2BC7DABD1C8592F3006C823A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2BC7DAD81C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2BC7DAD91C8592F3006C823A /* _6_03_01_________________Tests.m */,
+				2BC7DADB1C8592F3006C823A /* Info.plist */,
+			);
+			path = "16-03-01-(淬火)-多线程下的数据安全问题Tests";
+			sourceTree = "<group>";
+		};
+		2BC7DAE31C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题UITests */ = {
+			isa = PBXGroup;
+			children = (
+				2BC7DAE41C8592F3006C823A /* _6_03_01_________________UITests.m */,
+				2BC7DAE61C8592F3006C823A /* Info.plist */,
+			);
+			path = "16-03-01-(淬火)-多线程下的数据安全问题UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BC7DAB81C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BC7DAE91C8592F3006C823A /* Build configuration list for PBXNativeTarget "16-03-01-(淬火)-多线程下的数据安全问题" */;
+			buildPhases = (
+				2BC7DAB51C8592F3006C823A /* Sources */,
+				2BC7DAB61C8592F3006C823A /* Frameworks */,
+				2BC7DAB71C8592F3006C823A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "16-03-01-(淬火)-多线程下的数据安全问题";
+			productName = "16-03-01-(淬火)-多线程下的数据安全问题";
+			productReference = 2BC7DAB91C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2BC7DAD41C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BC7DAEC1C8592F3006C823A /* Build configuration list for PBXNativeTarget "16-03-01-(淬火)-多线程下的数据安全问题Tests" */;
+			buildPhases = (
+				2BC7DAD11C8592F3006C823A /* Sources */,
+				2BC7DAD21C8592F3006C823A /* Frameworks */,
+				2BC7DAD31C8592F3006C823A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BC7DAD71C8592F3006C823A /* PBXTargetDependency */,
+			);
+			name = "16-03-01-(淬火)-多线程下的数据安全问题Tests";
+			productName = "16-03-01-(淬火)-多线程下的数据安全问题Tests";
+			productReference = 2BC7DAD51C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2BC7DADF1C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BC7DAEF1C8592F3006C823A /* Build configuration list for PBXNativeTarget "16-03-01-(淬火)-多线程下的数据安全问题UITests" */;
+			buildPhases = (
+				2BC7DADC1C8592F3006C823A /* Sources */,
+				2BC7DADD1C8592F3006C823A /* Frameworks */,
+				2BC7DADE1C8592F3006C823A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BC7DAE21C8592F3006C823A /* PBXTargetDependency */,
+			);
+			name = "16-03-01-(淬火)-多线程下的数据安全问题UITests";
+			productName = "16-03-01-(淬火)-多线程下的数据安全问题UITests";
+			productReference = 2BC7DAE01C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BC7DAB11C8592F3006C823A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = man;
+				TargetAttributes = {
+					2BC7DAB81C8592F3006C823A = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					2BC7DAD41C8592F3006C823A = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 2BC7DAB81C8592F3006C823A;
+					};
+					2BC7DADF1C8592F3006C823A = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 2BC7DAB81C8592F3006C823A;
+					};
+				};
+			};
+			buildConfigurationList = 2BC7DAB41C8592F3006C823A /* Build configuration list for PBXProject "16-03-01-(淬火)-多线程下的数据安全问题" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2BC7DAB01C8592F3006C823A;
+			productRefGroup = 2BC7DABA1C8592F3006C823A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2BC7DAB81C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题 */,
+				2BC7DAD41C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题Tests */,
+				2BC7DADF1C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BC7DAB71C8592F3006C823A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC7DACF1C8592F3006C823A /* LaunchScreen.storyboard in Resources */,
+				2BC7DACC1C8592F3006C823A /* Assets.xcassets in Resources */,
+				2BC7DAC71C8592F3006C823A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BC7DAD31C8592F3006C823A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BC7DADE1C8592F3006C823A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BC7DAB51C8592F3006C823A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC7DACA1C8592F3006C823A /* _6_03_01_________________.xcdatamodeld in Sources */,
+				2BC7DAC41C8592F3006C823A /* ViewController.m in Sources */,
+				2BC7DAC11C8592F3006C823A /* AppDelegate.m in Sources */,
+				2BC7DABE1C8592F3006C823A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BC7DAD11C8592F3006C823A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC7DADA1C8592F3006C823A /* _6_03_01_________________Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BC7DADC1C8592F3006C823A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC7DAE51C8592F3006C823A /* _6_03_01_________________UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2BC7DAD71C8592F3006C823A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BC7DAB81C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题 */;
+			targetProxy = 2BC7DAD61C8592F3006C823A /* PBXContainerItemProxy */;
+		};
+		2BC7DAE21C8592F3006C823A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BC7DAB81C8592F3006C823A /* 16-03-01-(淬火)-多线程下的数据安全问题 */;
+			targetProxy = 2BC7DAE11C8592F3006C823A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2BC7DAC51C8592F3006C823A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BC7DAC61C8592F3006C823A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2BC7DACD1C8592F3006C823A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BC7DACE1C8592F3006C823A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2BC7DAE71C8592F3006C823A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2BC7DAE81C8592F3006C823A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BC7DAEA1C8592F3006C823A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "16-03-01-(淬火)-多线程下的数据安全问题/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cdmq.-6-03-01-----------------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2BC7DAEB1C8592F3006C823A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "16-03-01-(淬火)-多线程下的数据安全问题/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cdmq.-6-03-01-----------------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2BC7DAED1C8592F3006C823A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "16-03-01-(淬火)-多线程下的数据安全问题Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cdmq.-6-03-01-----------------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/16-03-01-(淬火)-多线程下的数据安全问题.app/16-03-01-(淬火)-多线程下的数据安全问题";
+			};
+			name = Debug;
+		};
+		2BC7DAEE1C8592F3006C823A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "16-03-01-(淬火)-多线程下的数据安全问题Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cdmq.-6-03-01-----------------Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/16-03-01-(淬火)-多线程下的数据安全问题.app/16-03-01-(淬火)-多线程下的数据安全问题";
+			};
+			name = Release;
+		};
+		2BC7DAF01C8592F3006C823A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "16-03-01-(淬火)-多线程下的数据安全问题UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cdmq.-6-03-01-----------------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "16-03-01-(淬火)-多线程下的数据安全问题";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		2BC7DAF11C8592F3006C823A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "16-03-01-(淬火)-多线程下的数据安全问题UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cdmq.-6-03-01-----------------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "16-03-01-(淬火)-多线程下的数据安全问题";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BC7DAB41C8592F3006C823A /* Build configuration list for PBXProject "16-03-01-(淬火)-多线程下的数据安全问题" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BC7DAE71C8592F3006C823A /* Debug */,
+				2BC7DAE81C8592F3006C823A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BC7DAE91C8592F3006C823A /* Build configuration list for PBXNativeTarget "16-03-01-(淬火)-多线程下的数据安全问题" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BC7DAEA1C8592F3006C823A /* Debug */,
+				2BC7DAEB1C8592F3006C823A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2BC7DAEC1C8592F3006C823A /* Build configuration list for PBXNativeTarget "16-03-01-(淬火)-多线程下的数据安全问题Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BC7DAED1C8592F3006C823A /* Debug */,
+				2BC7DAEE1C8592F3006C823A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2BC7DAEF1C8592F3006C823A /* Build configuration list for PBXNativeTarget "16-03-01-(淬火)-多线程下的数据安全问题UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BC7DAF01C8592F3006C823A /* Debug */,
+				2BC7DAF11C8592F3006C823A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2BC7DAC81C8592F3006C823A /* _6_03_01_________________.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2BC7DAC91C8592F3006C823A /* _6_03_01_________________.xcdatamodel */,
+			);
+			currentVersion = 2BC7DAC91C8592F3006C823A /* _6_03_01_________________.xcdatamodel */;
+			path = "_6_03_01_________________.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2BC7DAB11C8592F3006C823A /* Project object */;
+}

@@ -38,21 +38,30 @@
 
 
 #pragma --mark 提供售票方法
+/**
+ *  加锁，互斥锁
+    加锁，锁定代码尽量少
+    加锁范围内的代码，统一时间是允许一个线程执行
+    要保证这个锁，所有线程多能访问,而且所有线程访问的是同一个对象
+ */
 - (void) saleTicktes
 {
     while (YES) {
         //模拟下一张票，卖一张票休息一秒
-        [NSThread sleepForTimeInterval:1.0];
+//        [NSThread sleepForTimeInterval:1.0];
         
-        //判断是否有票
-        if (self.tickets>0) {
-            self.tickets --;
-            NSLog(@"剩余票数:--%d---%@",self.tickets,[ NSThread currentThread]);
-            
-        }else{
-            NSLog(@"票卖完了！！");
-            break;
+        @synchronized(self) {
+            //判断是否有票
+            if (self.tickets>0) {
+                self.tickets --;
+                NSLog(@"剩余票数:--%d---%@",self.tickets,[ NSThread currentThread]);
+                
+            }else{
+                NSLog(@"票卖完了！！");
+                break;
+            }
         }
+
 
         
     }

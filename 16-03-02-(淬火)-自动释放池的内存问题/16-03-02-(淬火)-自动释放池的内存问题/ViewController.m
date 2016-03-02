@@ -31,6 +31,9 @@
        str = [str stringByAppendingString:@"--world!"];
         
          NSLog(@"%p",str);
+        
+        //                (alloc new retain copy) release
+        //                如果没有alloc new retain copy而产生了新对象，里面都是autorelease
     }
 }
 

@@ -16,8 +16,54 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self delay];
+    [self groupQueue];
 }
+
+
+
+#pragma --mark(调度组) 分组
+- (void) groupQueue
+{
+    /**
+     应用场景：
+     开发的时候，有的时候出现多个网络请求都完成以后（每一个网络请求的事件长短不一定），再统一通知用户
+     
+     比如： 下载小说：三国演义， 红楼梦， 水浒传
+     */
+    //创建一个调度组
+    dispatch_group_t group = dispatch_group_create();
+    
+    //队列
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    
+    //添加到任务组队列
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"下载小说A---%@", [NSThread currentThread]);
+    });
+    
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"下载小说B---%@", [NSThread currentThread]);
+    });
+    
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"下载小说C---%@", [NSThread currentThread]);
+    });
+     // 获得所有调度组里面的异步任务完成的通知
+//    dispatch_group_notify(group, queue, ^{
+//        NSLog(@"收到通知，小说都下载完了。%@",[NSThread currentThread]);
+//    });
+    
+     //注意点： 在调度组完成通知里，可以跨队列通信
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+         // 更新UI，在主线程
+        NSLog(@"收到通知，小说都下载完了。%@",[NSThread currentThread]);
+    });
+    
+    
+    
+    
+}
+
 
 
 #pragma --mark 延时操作

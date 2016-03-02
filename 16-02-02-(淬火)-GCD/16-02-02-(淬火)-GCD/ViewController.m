@@ -37,7 +37,38 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self gcdtest6];
+    [self gcdtest7];
+}
+
+
+#pragma --mark 同步任务的作用
+- (void) gcdtest7
+{
+    // 并发队列
+    dispatch_queue_t  queue = dispatch_queue_create("cz", DISPATCH_QUEUE_CONCURRENT);
+    
+    /**
+     例子：有一个小说网站
+     - 必须登录，才能下载小说
+     
+     有三个任务：
+     1. 用户登录
+     2. 下载小说A
+     3. 下载小说B
+     */
+    // 添加任务
+    // 同步任务，需要马上执行。 不开新线程
+    dispatch_sync(queue, ^{
+        NSLog(@"用户登录 %@", [NSThread currentThread]);
+    });
+    //
+    dispatch_async(queue, ^{
+        NSLog(@"下载小说A %@", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"下载小说B %@", [NSThread currentThread]);
+    });
+
 }
 
 /**

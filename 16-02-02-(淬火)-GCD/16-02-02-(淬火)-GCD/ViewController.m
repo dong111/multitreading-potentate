@@ -37,8 +37,61 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self gcdtest4];
+    [self gcdtest6];
 }
+
+/**
+ *  主队列：专门负责在主线程上调度任务，不会在子线程调度任务，在主队列不允许开新线程.
+    同步执行：要马上执行
+    结果：死锁
+ */
+- (void) gcdtest6
+{
+    //获取主队列-->程序启动——->至少有一个主线程-->开始就会创建主队列
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    
+    NSLog(@"1----");
+    //异步执行任务
+    for (int i=0; i<30; i++) {
+        NSLog(@"添加异步执行任务！");
+        // 异步：把任务放到主队列里，但是不需要马上执行
+        //主线程要继续往主队列里面添加任务，同步任务要马上执行，结果只能死锁主线程
+        //添加同步任务就死锁
+        dispatch_sync(queue, ^{
+            NSLog(@"%@--%d",[NSThread currentThread],i);
+        });
+    }
+    NSLog(@"完成----");
+}
+
+
+/**
+ *  主队列：负责在主线程上调度任务，不会在子线程调度任务，在主队列不允许开新线程
+    异步执行：会开新线程，在新线程执行
+    结果不线程，只能在主线程上顺序执行
+ */
+- (void) gcdtest5
+{
+    //获取主队列-->程序启动——->至少有一个主线程-->开始就会创建主队列
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    
+    NSLog(@"1----");
+    
+    //异步执行任务
+    for (int i=0; i<30; i++) {
+        NSLog(@"添加异步执行任务！");
+         // 异步：把任务放到主队列里，但是不需要马上执行
+        //主线程继续往主队列里面添加任务
+        dispatch_async(queue, ^{
+            NSLog(@"%@--%d",[NSThread currentThread],i);
+        });
+    }
+    NSLog(@"完成----");
+
+}
+
+
+
 
 /**
  *  并行队里: 可以同时执行多个任务

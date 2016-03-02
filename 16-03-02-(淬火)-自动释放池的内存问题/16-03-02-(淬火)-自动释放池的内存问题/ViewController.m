@@ -16,6 +16,8 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    
+#pragma 为什么没出问题呢？？  ios9新特效？？？
     int maxLength = 1024*1024*10;
     for (int i=0; i<maxLength; i++) {
         NSLog(@"%d",i);

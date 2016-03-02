@@ -16,9 +16,24 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self groupQueue];
+    [self once];
 }
 
+
+
+#pragma --mark 一次性执行
+- (void) once
+{
+    static dispatch_once_t onceToken;
+    NSLog(@"%ld", onceToken);
+    dispatch_once(&onceToken, ^{
+        NSLog(@"%ld", onceToken);
+        //类似于Js防止点击多次
+        NSLog(@"真的只执行一次么？");
+    });
+    
+    NSLog(@"执行完成");
+}
 
 
 #pragma --mark(调度组) 分组

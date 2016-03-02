@@ -37,8 +37,43 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self gcdtest7];
+    [self gcdtest8];
 }
+
+/**
+ 全局队列跟并发队列的区别   全局队列和并发队列基本特性相同
+ 1. 全局队列没有名称 并发队列有名称
+ 2. 全局队列，是供所有的应用程序共享。
+ 3. 在MRC开发，并发队列，创建完了，需要释放。 全局队列不需要我们管理
+ */
+#pragma --mark 全局队列
+- (void) gcdtest8
+{
+    // 获得全局队列
+    /**
+     参数：第一个参数，一般 写 0（可以适配 iOS 7 & 8）
+     iOS 7
+     DISPATCH_QUEUE_PRIORITY_HIGH 2  高优先级
+     DISPATCH_QUEUE_PRIORITY_DEFAULT 0  默认优先级
+     DISPATCH_QUEUE_PRIORITY_LOW (-2) 低优先级
+     DISPATCH_QUEUE_PRIORITY_BACKGROUND INT16_MIN 后台优先级
+     
+     iOS 8
+     QOS_CLASS_DEFAULT  0
+     
+     第二个参数：保留参数 0
+     */
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    
+    // 添加异步任务
+    for (int i = 0; i < 10; i++) {
+        dispatch_async(queue, ^{
+            NSLog(@"%@ %d", [NSThread currentThread], i);
+        });
+    }
+    
+}
+
 
 
 #pragma --mark 同步任务的作用

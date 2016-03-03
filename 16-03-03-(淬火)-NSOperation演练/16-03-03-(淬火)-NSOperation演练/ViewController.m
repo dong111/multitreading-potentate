@@ -29,7 +29,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self opDemo5];
+    [self opDemo6];
 }
 - (void) opDemo8
 {
@@ -40,9 +40,22 @@
 {
     
 }
+#pragma -mark 最大并发数设置
 - (void) opDemo6
 {
+    //队列
+    NSOperationQueue *queue =[[NSOperationQueue alloc] init];
+    //设置最大并发数为2(最大并发数 不是线程总数量  而是同时执行操作的线程数量)
+    queue.maxConcurrentOperationCount = 2;
     
+    for (int i=0; i<10; i++) {
+        // 不创建操作对象，使用addOperationWithBlock:直接添加操作到队列
+        [queue addOperationWithBlock:^{
+            [NSThread sleepForTimeInterval:2.0];
+            NSLog(@"%@----%d",[NSThread currentThread],i);
+            
+        }];
+    }
 }
 
 #pragma --mark 线程间通信(最重要的代码)

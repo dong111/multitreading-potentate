@@ -44,7 +44,12 @@
     [cell.textLabel setText:app.name];
     [cell.detailTextLabel setText:app.download];
     
+    //下载图片
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
     
+    UIImage *image = [UIImage imageWithData:data];
+    
+    [cell.imageView setImage:image];
     
     return cell;
     

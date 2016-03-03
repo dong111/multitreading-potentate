@@ -32,7 +32,36 @@
     [self opDemo1];
 }
 
-#pragma 单个NSInvocationOperation使用
+#pragma --mark NSBlockOperation使用
+- (void) opDemo3
+{
+    NSOperationQueue *q = [[NSOperationQueue alloc] init];
+    
+    //把多个操作翻入队里并发异步执行
+    for (int i=0; i<10; i++) {
+        
+//        [q addOperation:op];
+    }
+}
+
+
+#pragma --mark多个NSInvocation的使用
+- (void) opDemo2
+{
+    //队列 GCD里面并发 （全局）队列使用最多，所以NSOpration 技术直接把GCD里面的并发队列封装了起来
+    //NSOprationQueue 的本质就是GCD里面的并发队里
+    //操作就是GCD里面的异步执行操作
+    NSOperationQueue *q = [[NSOperationQueue alloc] init];
+
+    //把多个操作翻入队里并发异步执行
+    for (int i=0; i<10; i++) {
+        NSInvocationOperation *op =[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(downLoadImages:) object:@"哈哈哈"];
+        [q addOperation:op];
+    }
+    
+}
+
+#pragma  --mark单个NSInvocationOperation使用
 - (void) opDemo1
 {
    NSInvocationOperation *op =  [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(downLoadImages:) object:@"hahahehe"];

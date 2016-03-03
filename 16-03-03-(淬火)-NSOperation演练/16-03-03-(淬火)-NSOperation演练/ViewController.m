@@ -29,8 +29,45 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self opDemo6];
+    [self dependecy];
 }
+#pragma -mark 线程之间的依赖关系
+- (void) dependecy
+{
+    /**
+     例子：
+     1. 下载一个小说的压缩包
+     2. 解压缩，删除压缩包
+     3. 更新UI
+     
+     */
+    
+   NSBlockOperation *blockOp1 = [NSBlockOperation blockOperationWithBlock:^{
+       NSLog(@"1. 下载一个小说的压缩包");
+    }];
+    NSBlockOperation *blockOp2 = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"2. 解压缩，删除压缩包");
+    }];
+    NSBlockOperation *blockOp3 = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"3. 更新UI");
+    }];
+    
+    //指定任务之间的依赖关系  --依赖关系可以跨队列，（子线程下载完成，主线程更新）
+    [blockOp2 addDependency:blockOp1];
+    [blockOp3 addDependency:blockOp2];
+    
+    // 注意点：一定不要出现循环依赖关系 否则就是死锁
+    //    [op1 addDependency:op3];
+    
+    // waitUntilFinished 类似GCD的调度组的通知
+    // NO 不等待，会直接执行  NSLog(@"come here");
+    // YES 等待上面的操作执行结束，再 执行  NSLog(@"come here")
+    [self.opQueue addOperations:@[blockOp1,blockOp2] waitUntilFinished:YES];
+    //在主线程更新UI
+    [[NSOperationQueue mainQueue] addOperation:blockOp3];
+    NSLog(@"任务完成！");
+}
+
 #pragma -mark 取消队列里面所有操作
 - (IBAction)cancelAll {
     //取消队列所有操作

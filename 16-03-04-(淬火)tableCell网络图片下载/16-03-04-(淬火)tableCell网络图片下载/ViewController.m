@@ -7,21 +7,35 @@
 //
 
 #import "ViewController.h"
+#import "CDApp.h"
 
 @interface ViewController ()
+
+@property (nonatomic,strong) NSArray *apps;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+//懒加载数据
+- (NSArray *)apps
+{
+    if (_apps==nil) {
+        _apps = [CDApp appsList];
+    }
+    return _apps;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
 }
 
 @end

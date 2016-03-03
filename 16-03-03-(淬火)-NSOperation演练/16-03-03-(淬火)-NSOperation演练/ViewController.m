@@ -31,10 +31,17 @@
 {
     [self opDemo6];
 }
-- (void) opDemo8
-{
+#pragma -mark 取消队列里面所有操作
+- (IBAction)cancelAll {
+    //取消队列所有操作
+    [self.opQueue cancelAllOperations];
     
+    NSLog(@"取消队列所有操作！");
+    //取消队列的挂起挂起状态
+    //(只要是取消队列操作，我们就把队列设置为开启状态，帆=方便队列再次启动)
+    self.opQueue.suspended = NO;
 }
+
 #pragma -mark 暂停/继续 (对队列的暂停和继续)
 
 - (IBAction)pause {

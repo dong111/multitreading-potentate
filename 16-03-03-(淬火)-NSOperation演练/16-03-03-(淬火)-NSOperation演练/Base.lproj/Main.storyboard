@@ -27,16 +27,28 @@
                                     <action selector="pause" destination="BYZ-38-t0r" eventType="touchUpInside" id="twZ-KR-BNk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddY-2b-bzg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="取消所有"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="28" y="85" width="96" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="cancelAll" destination="BYZ-38-t0r" eventType="touchUpInside" id="paU-h0-gYF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ZIU-7F-EWb"/>
+                                <exclude reference="ddY-2b-bzg"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ZIU-7F-EWb"/>
+                                <include reference="ddY-2b-bzg"/>
                             </mask>
                         </variation>
                     </view>

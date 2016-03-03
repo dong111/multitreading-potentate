@@ -8,6 +8,31 @@
 
 #import "ViewController.h"
 
+
+/**
+ GCD --> iOS 4.0
+ - 将任务（block）添加到队列（串行/并发(全局)），指定 执行任务的方法(同步(阻塞)/异步)
+ - 拿到 dispatch_get_main_queue()。 线程间通信
+ - NSOperation无法做到，一次性执行，延迟执行，调度组(op相对复杂)
+ 
+ 
+ NSOperation ----> iOS 2.0 （后来苹果改造了NSOperation的底层）
+ - 将操作(异步执行)添加到队列(并发/全局)
+ - [NSOperationQueue mainQueue] 主队列。 任务添加到主队列， 就会在主线程执行
+ - 提供了一些GCD不好实现的，”最大并发数“
+ - 暂停/继续 --- 挂起
+ - 取消所有的任务
+ - 依赖关系
+ */
+
+/**
+ 小结一下:
+ 只要是NSOperation的子类 就能添加到操作队列
+ - 一旦操作添加到队列， 就会自动异步执行
+ - 如果没有添加到队列, 而是使用start方法，会在当前线程执行操作
+ - 如果要做线程间通信，可以使用[NSOperationQueue mainQueue]拿到主队列，往主队列添加操作(更新UI)
+ */
+
 @interface ViewController ()
 
 //创建任务队列，负责调度所有操作

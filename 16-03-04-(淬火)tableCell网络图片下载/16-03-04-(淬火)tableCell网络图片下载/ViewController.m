@@ -29,13 +29,34 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.apps.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    //获取数据
+    CDApp *app = self.apps[indexPath.row];
+    
+    NSString *required= [NSString stringWithFormat:@"app"];
+    UITableViewCell *cell =  [self.tableView dequeueReusableCellWithIdentifier:required];
+    
+    [cell.textLabel setText:app.name];
+    [cell.detailTextLabel setText:app.download];
+    
+    
+    
+    return cell;
+    
 }
+
+
+
+
+
+
+
+
+
 
 @end

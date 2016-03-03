@@ -29,7 +29,34 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self opDemo4];
+    [self opDemo5];
+}
+- (void) opDemo8
+{
+    
+}
+
+- (void) opDemo7
+{
+    
+}
+- (void) opDemo6
+{
+    
+}
+
+#pragma --mark 线程间通信(最重要的代码)
+- (void) opDemo5
+{
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperationWithBlock:^{
+         NSLog(@"耗时任务---%@",[NSThread currentThread]);
+        
+        //在主队列更新UI
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+             NSLog(@"主任务更新UI---%@",[NSThread currentThread]);
+        }];
+    }];
 }
 
 #pragma NSBlockOperation更简单的使用

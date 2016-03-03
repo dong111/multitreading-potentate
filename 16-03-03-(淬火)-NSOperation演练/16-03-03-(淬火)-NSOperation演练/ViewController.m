@@ -29,7 +29,32 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self opDemo1];
+    [self opDemo4];
+}
+
+#pragma NSBlockOperation更简单的使用
+- (void) opDemo4
+{
+    //队列
+    NSOperationQueue *queue =[[NSOperationQueue alloc] init];
+    
+    for (int i=0; i<10; i++) {
+        // 不创建操作对象，使用addOperationWithBlock:直接添加操作到队列
+        [queue addOperationWithBlock:^{
+            NSLog(@"%@----%d",[NSThread currentThread],i);
+
+        }];
+    }
+    
+    //队列里面还可以继续添加block对象
+   NSBlockOperation *opb =  [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"opBlock---%@",[NSThread currentThread]);
+    }];
+    [queue addOperation:opb];
+    
+    NSInvocationOperation *opinv = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(downLoadImages:) object:@"invocation 下载图片"];
+    [queue addOperation:opinv];
+    
 }
 
 #pragma --mark NSBlockOperation使用
@@ -39,8 +64,11 @@
     
     //把多个操作翻入队里并发异步执行
     for (int i=0; i<10; i++) {
-        
-//        [q addOperation:op];
+       NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+            NSLog(@"%@----%d",[NSThread currentThread],i);
+
+        }];
+        [q addOperation:op];
     }
 }
 

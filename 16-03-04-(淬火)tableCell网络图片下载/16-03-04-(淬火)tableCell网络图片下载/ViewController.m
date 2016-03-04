@@ -138,6 +138,9 @@
         return;
     }
     
+    //考虑到block中强引用了self 可能最后导致内存泄露 对象没办法销毁 推荐将self 替换成week类型  代码如下 不过我在此处没有形成强循环引用就不改了
+//     __weak typeof(self) weakSelf = self;
+    
     [self.imgsDownCache setValue:@"yes" forKey:app.icon];
         //下载图片
     NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{

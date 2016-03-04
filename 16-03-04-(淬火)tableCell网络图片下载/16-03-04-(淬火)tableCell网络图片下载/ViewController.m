@@ -17,16 +17,16 @@
 //所有下载操作的缓冲池,防止重复添加下载操作
 @property (nonatomic,strong) NSMutableDictionary *imgsDownCache;
 //所有下载图片的缓冲池
-@property (nonatomic,strong) NSMutableDictionary *images;
+@property (nonatomic,strong) NSCache *images;
 
 @end
 
 @implementation ViewController
 
-- (NSMutableDictionary *)images
+- (NSCache *)images
 {
     if (_images==nil) {
-        _images = [NSMutableDictionary dictionary];
+        _images = [[NSCache alloc] init];
     }
     return _images;
 }
@@ -107,7 +107,7 @@
 
     //对图片存在是否做出判断
     //如果图片存在不需要去下载了
-    UIImage *image = [self.images valueForKey:app.icon];
+    UIImage *image = [self.images objectForKey:app.icon];
     if (image!=nil) {
         [cell.imageView setImage:image];
     }else{
@@ -117,7 +117,7 @@
             //从沙盒中加载到了图片
             NSLog(@"从沙盒中加载到了图片");
             //放入缓存
-            [self.images setValue:image forKey:app.icon];
+            [self.images setObject:image forKey:app.icon];
             //刷新表格数据
             [cell.imageView setImage:image];
 
@@ -173,7 +173,7 @@
 //        NSArray *arr = [NSArray arrayWithObjects:@"1", [NSNull null], @"2"];
             if (image) {
                 //图片下载了存入实体
-                [self.images setValue:image forKey:app.icon];
+                [self.images setObject:image forKey:app.icon];
                 //将图片写入沙盒
                 [data writeToFile:[self cachePathWithUrl:app.icon] atomically:YES];
                 //图片下载完了,该清空下载缓冲池

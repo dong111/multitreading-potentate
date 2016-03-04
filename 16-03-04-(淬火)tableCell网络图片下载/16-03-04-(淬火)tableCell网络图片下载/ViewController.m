@@ -10,13 +10,13 @@
 #import "CDApp.h"
 
 @interface ViewController ()
-
+//plist数据容器
 @property (nonatomic,strong) NSArray *apps;
-
+//管理全局下载的队列
 @property (nonatomic,strong) NSOperationQueue *oPqueue;
-
+//所有下载操作的缓冲池,防止重复添加下载操作
 @property (nonatomic,strong) NSMutableDictionary *imgsDownCache;
-
+//所有下载图片的缓冲池
 @property (nonatomic,strong) NSMutableDictionary *images;
 
 @end
@@ -81,6 +81,8 @@
     缺点:内存，所有的model对象都是存储都是存在在内存中的，如果大数据交由model管理，在内存警告时候，没有办法清空model
     解决办法;将model中的大数据分离出来，放到资源池中，方便内存管理
  
+    问题6：下载操作缓冲池越来越大没有清理   思考问题点：任何缓冲池有加入就一定有销毁，思考销毁的时间点
+ 
  */
 
 /**
@@ -115,7 +117,8 @@
         [self downLoadImage:indexPath];
     }
     
-    NSLog(@"下载图片线程数量--%ld",self.oPqueue.operationCount);
+//    NSLog(@"下载图片线程数量--%ld",self.oPqueue.operationCount);
+    NSLog(@"%@",self.imgsDownCache);
     return cell;
     
 }
@@ -147,6 +150,9 @@
             UIImage *image = [UIImage imageWithData:data];
             //图片下载了存入实体
             [self.images setValue:image forKey:app.icon];
+            //图片下载完了,该清空下载缓冲池
+            [self.imgsDownCache removeObjectForKey:app.icon];
+        
         
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 //局部刷新

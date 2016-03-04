@@ -111,14 +111,26 @@
     if (image!=nil) {
         [cell.imageView setImage:image];
     }else{
-        UIImage *image = [UIImage imageNamed:@"user_default"];
-        [cell.imageView setImage:image];
-        
-        [self downLoadImage:indexPath];
+        //内存中没有图片，尝试从沙盒中获取
+        image = [UIImage imageWithContentsOfFile:[self cachePathWithUrl:app.icon]];
+        if (image) {
+            //从沙盒中加载到了图片
+            NSLog(@"从沙盒中加载到了图片");
+            //放入缓存
+            [self.images setValue:image forKey:app.icon];
+            //刷新表格数据
+            [cell.imageView setImage:image];
+
+        }else{
+            UIImage *image = [UIImage imageNamed:@"user_default"];
+            [cell.imageView setImage:image];
+            
+            [self downLoadImage:indexPath];
+        }
     }
     
 //    NSLog(@"下载图片线程数量--%ld",self.oPqueue.operationCount);
-    NSLog(@"%@",self.imgsDownCache);
+//    NSLog(@"%@",self.imgsDownCache);
     return cell;
     
 }
@@ -162,9 +174,10 @@
             if (image) {
                 //图片下载了存入实体
                 [self.images setValue:image forKey:app.icon];
+                //将图片写入沙盒
+                [data writeToFile:[self cachePathWithUrl:app.icon] atomically:YES];
                 //图片下载完了,该清空下载缓冲池
                 [self.imgsDownCache removeObjectForKey:app.icon];
-                
             }
 
         
@@ -180,6 +193,21 @@
     [self.oPqueue addOperation:op];
 
 }
+
+//根据图片url获取沙盒存储的位置
+- (NSString *) cachePathWithUrl:(NSString *) url
+{
+    //获取沙盒的目录位置
+    NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    //获取图片名称，合并目录，生成缓存目录位置
+    return [cacheDir stringByAppendingPathComponent:url.lastPathComponent];
+
+}
+//测试缓存目录获取
+//-(void)viewDidLoad
+//{
+//    NSLog(@"%@",[self cachePathWithUrl:@""]);
+//}
 
 /**
  *  在真实开发中 一定要对这个方法处理

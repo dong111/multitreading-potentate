@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CDApp.h"
+#import "SDWebImage/UIImageView+WebCache.h"
 
 @interface ViewController ()
 //plist数据容器
@@ -105,29 +106,32 @@
     [cell.textLabel setText:app.name];
     [cell.detailTextLabel setText:app.download];
 
+    //使用SDWebImage第三方框架来下载网络图片
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:app.icon] placeholderImage:[UIImage imageNamed:@"user_default"] options:SDWebImageRetryFailed];
+    
     //对图片存在是否做出判断
     //如果图片存在不需要去下载了
-    UIImage *image = [self.images objectForKey:app.icon];
-    if (image!=nil) {
-        [cell.imageView setImage:image];
-    }else{
-        //内存中没有图片，尝试从沙盒中获取
-        image = [UIImage imageWithContentsOfFile:[self cachePathWithUrl:app.icon]];
-        if (image) {
-            //从沙盒中加载到了图片
-            NSLog(@"从沙盒中加载到了图片");
-            //放入缓存
-            [self.images setObject:image forKey:app.icon];
-            //刷新表格数据
-            [cell.imageView setImage:image];
-
-        }else{
-            UIImage *image = [UIImage imageNamed:@"user_default"];
-            [cell.imageView setImage:image];
-            
-            [self downLoadImage:indexPath];
-        }
-    }
+//    UIImage *image = [self.images objectForKey:app.icon];
+//    if (image!=nil) {
+//        [cell.imageView setImage:image];
+//    }else{
+//        //内存中没有图片，尝试从沙盒中获取
+//        image = [UIImage imageWithContentsOfFile:[self cachePathWithUrl:app.icon]];
+//        if (image) {
+//            //从沙盒中加载到了图片
+//            NSLog(@"从沙盒中加载到了图片");
+//            //放入缓存
+//            [self.images setObject:image forKey:app.icon];
+//            //刷新表格数据
+//            [cell.imageView setImage:image];
+//
+//        }else{
+//            UIImage *image = [UIImage imageNamed:@"user_default"];
+//            [cell.imageView setImage:image];
+//            
+//            [self downLoadImage:indexPath];
+//        }
+//    }
     
 //    NSLog(@"下载图片线程数量--%ld",self.oPqueue.operationCount);
 //    NSLog(@"%@",self.imgsDownCache);

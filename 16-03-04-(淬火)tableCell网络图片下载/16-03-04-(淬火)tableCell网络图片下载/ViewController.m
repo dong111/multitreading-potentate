@@ -17,9 +17,19 @@
 
 @property (nonatomic,strong) NSMutableDictionary *imgsDownCache;
 
+@property (nonatomic,strong) NSMutableDictionary *images;
+
 @end
 
 @implementation ViewController
+
+- (NSMutableDictionary *)images
+{
+    if (_images==nil) {
+        _images = [NSMutableDictionary dictionary];
+    }
+    return _images;
+}
 
 - (NSMutableDictionary *)imgsDownCache
 {
@@ -65,6 +75,12 @@
  
     问题4:用户在图片未下载完成时候快速滚动，导致任务队列多出重复下载操作
     解决办法:建立一个下载缓冲池,通过"缓冲池"检查图片是否下载过，如果下载了就不重复下载了
+ 
+    问题5:将图像保存到模型的优缺点
+    优点：不用重复下载图片，将ui与操作分离，和module相互关联，数据交由model管理
+    缺点:内存，所有的model对象都是存储都是存在在内存中的，如果大数据交由model管理，在内存警告时候，没有办法清空model
+    解决办法;将model中的大数据分离出来，放到资源池中，方便内存管理
+ 
  */
 
 /**
@@ -89,8 +105,9 @@
 
     //对图片存在是否做出判断
     //如果图片存在不需要去下载了
-    if (app.image!=nil) {
-        [cell.imageView setImage:app.image];
+    UIImage *image = [self.images valueForKey:app.icon];
+    if (image!=nil) {
+        [cell.imageView setImage:image];
     }else{
         UIImage *image = [UIImage imageNamed:@"user_default"];
         [cell.imageView setImage:image];
@@ -129,8 +146,8 @@
             
             UIImage *image = [UIImage imageWithData:data];
             //图片下载了存入实体
-            app.image = image;
-            
+            [self.images setValue:image forKey:app.icon];
+        
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 //局部刷新
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
@@ -144,8 +161,18 @@
 
 }
 
-
-
+/**
+ *  在真实开发中 一定要对这个方法处理
+ */
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    //内存警告清空不必要数据
+    [self.images removeAllObjects];
+    //清空操作缓存
+    [self.imgsDownCache removeAllObjects];
+    
+}
 
 
 

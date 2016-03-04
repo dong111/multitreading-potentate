@@ -151,11 +151,22 @@
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
             
             UIImage *image = [UIImage imageWithData:data];
-            //图片下载了存入实体
-            [self.images setValue:image forKey:app.icon];
-            //图片下载完了,该清空下载缓冲池
-            [self.imgsDownCache removeObjectForKey:app.icon];
-        
+        // 2. 将下载的数据保存到模型
+        // reason: '*** setObjectForKey: object cannot be nil
+        //字典的赋值不能为空  nil
+//        [NSNull null]; 空对象 可以放到字典或者数组
+//        Null : c语言的空指针
+    //   nil:oc中指向空对象的指针
+//        Nil :空类
+//        NSArray *arr = [NSArray arrayWithObjects:@"1", [NSNull null], @"2"];
+            if (image) {
+                //图片下载了存入实体
+                [self.images setValue:image forKey:app.icon];
+                //图片下载完了,该清空下载缓冲池
+                [self.imgsDownCache removeObjectForKey:app.icon];
+                
+            }
+
         
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 //局部刷新

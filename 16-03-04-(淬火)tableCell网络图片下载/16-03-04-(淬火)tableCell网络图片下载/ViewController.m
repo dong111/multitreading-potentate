@@ -46,7 +46,8 @@
  *   问题1: 如果网络比较慢，会比较卡
      解决办法：用异步下载
  
-
+     问题2:图片没有frame,图片初始化时候，给的Imageview的frame为0,所以异步加载图片后不点击cell或者滚动cell，图片也不会显示
+    解决办法：使用占位图
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -58,6 +59,8 @@
     
     [cell.textLabel setText:app.name];
     [cell.detailTextLabel setText:app.download];
+    UIImage *image = [UIImage imageNamed:@"user_default"];
+    [cell.imageView setImage:image];
     
     
     NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{

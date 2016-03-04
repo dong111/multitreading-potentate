@@ -15,9 +15,20 @@
 
 @property (nonatomic,strong) NSOperationQueue *oPqueue;
 
+@property (nonatomic,strong) NSMutableDictionary *imgsDownCache;
+
 @end
 
 @implementation ViewController
+
+- (NSMutableDictionary *)imgsDownCache
+{
+    if (_imgsDownCache==nil) {
+        _imgsDownCache = [[NSMutableDictionary alloc] init];
+    }
+    return _imgsDownCache;
+}
+
 //初始化op队列
 - (NSOperationQueue *)oPqueue
 {
@@ -51,6 +62,9 @@
     问题3:如果图片下载速度不一致，同时用户快速滚动，因为cell重用导致图片混乱
         说明比如第一个cell可能对于下载图片1.2.3 滚动导致cell对于不同图片
     解决办法：mvc 让cell关联模型  模型绑定对于图片  让图片和cell解绑
+ 
+    问题4:用户在图片未下载完成时候快速滚动，导致任务队列多出重复下载操作
+    解决办法:建立一个下载缓冲池,通过"缓冲池"检查图片是否下载过，如果下载了就不重复下载了
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -71,34 +85,36 @@
         UIImage *image = [UIImage imageNamed:@"user_default"];
         [cell.imageView setImage:image];
     
-        //下载图片
-        NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-            
-            //模拟网络比较卡
-            [NSThread sleepForTimeInterval:1.0];
+        if ([self.imgsDownCache valueForKey:app.icon]) {
+            NSLog(@"图片已经在下载了，不需要重复下载");
+        }else{
+            [self.imgsDownCache setValue:@"yes" forKey:app.icon];
             //下载图片
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
-            
-            UIImage *image = [UIImage imageWithData:data];
-            //图片下载了存入实体
-            app.image = image;
-            
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                //局部刷新
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+            NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
                 
-//                [cell.imageView setImage:app.image];
+                //模拟网络比较卡
+                [NSThread sleepForTimeInterval:2.0];
+                //下载图片
+                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
+                
+                UIImage *image = [UIImage imageWithData:data];
+                //图片下载了存入实体
+                app.image = image;
+                
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    //局部刷新
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+                    
+                    //                [cell.imageView setImage:app.image];
+                }];
+                
             }];
             
-        }];
-        
-        [self.oPqueue addOperation:op];
-        
-        
+            [self.oPqueue addOperation:op];
+        }
     }
     
-
-    
+    NSLog(@"下载图片线程数量--%ld",self.oPqueue.operationCount);
     return cell;
     
 }

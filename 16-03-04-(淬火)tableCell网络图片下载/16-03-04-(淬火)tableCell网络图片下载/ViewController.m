@@ -13,9 +13,19 @@
 
 @property (nonatomic,strong) NSArray *apps;
 
+@property (nonatomic,strong) NSOperationQueue *oPqueue;
+
 @end
 
 @implementation ViewController
+//初始化op队列
+- (NSOperationQueue *)oPqueue
+{
+    if (_oPqueue==nil) {
+        _oPqueue = [[NSOperationQueue alloc] init];
+    }
+    return _oPqueue;
+}
 
 //懒加载数据
 - (NSArray *)apps
@@ -32,7 +42,12 @@
     return self.apps.count;
 }
 
+/**
+ *   问题1: 如果网络比较慢，会比较卡
+     解决办法：用异步下载
+ 
 
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //获取数据
@@ -44,12 +59,24 @@
     [cell.textLabel setText:app.name];
     [cell.detailTextLabel setText:app.download];
     
-    //下载图片
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
     
-    UIImage *image = [UIImage imageWithData:data];
+    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        
+        //模拟网络比较卡
+        [NSThread sleepForTimeInterval:1.0];
+        //下载图片
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
+        
+        UIImage *image = [UIImage imageWithData:data];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [cell.imageView setImage:image];
+        }];
+        
+    }];
     
-    [cell.imageView setImage:image];
+    
+    [self.oPqueue addOperation:op];
     
     return cell;
     

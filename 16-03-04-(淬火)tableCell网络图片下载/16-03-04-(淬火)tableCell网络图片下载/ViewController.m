@@ -66,6 +66,16 @@
     问题4:用户在图片未下载完成时候快速滚动，导致任务队列多出重复下载操作
     解决办法:建立一个下载缓冲池,通过"缓冲池"检查图片是否下载过，如果下载了就不重复下载了
  */
+
+/**
+ *  代码重构
+    让代码方法单一操作，把其它复杂功能代码分装起来
+    代码封装:
+    1.建立一个新方法
+    2.将代码块移如新方法中，移除代码块的地方调用新创建的方法
+    3.根据代码块报错，提取方法参数  需考虑：方法参数相互关联时候，尽量移除可省略参数，只留下必要参数
+    4.代码重构后需要测试
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //获取数据
@@ -84,34 +94,8 @@
     }else{
         UIImage *image = [UIImage imageNamed:@"user_default"];
         [cell.imageView setImage:image];
-    
-        if ([self.imgsDownCache valueForKey:app.icon]) {
-            NSLog(@"图片已经在下载了，不需要重复下载");
-        }else{
-            [self.imgsDownCache setValue:@"yes" forKey:app.icon];
-            //下载图片
-            NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-                
-                //模拟网络比较卡
-                [NSThread sleepForTimeInterval:2.0];
-                //下载图片
-                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
-                
-                UIImage *image = [UIImage imageWithData:data];
-                //图片下载了存入实体
-                app.image = image;
-                
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    //局部刷新
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-                    
-                    //                [cell.imageView setImage:app.image];
-                }];
-                
-            }];
-            
-            [self.oPqueue addOperation:op];
-        }
+        
+        [self downLoadImage:indexPath];
     }
     
     NSLog(@"下载图片线程数量--%ld",self.oPqueue.operationCount);
@@ -120,8 +104,45 @@
 }
 
 
+//由于app 可以通过类属性和传入参数NSIdexPath获取，所以就不需要传入这个参数了
+/**
+ *if else 代码块提取  把else的代码移除来
+ *
+ *  @param indexPath 必要参数对应下载那个app
+ */
+- (void) downLoadImage:(NSIndexPath *)indexPath
+{
+    CDApp *app = self.apps[indexPath.row];
+    if ([self.imgsDownCache valueForKey:app.icon]) {
+        NSLog(@"图片已经在下载了，不需要重复下载");
+        return;
+    }
+    
+    [self.imgsDownCache setValue:@"yes" forKey:app.icon];
+        //下载图片
+    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+            
+            //模拟网络比较卡
+            [NSThread sleepForTimeInterval:2.0];
+            //下载图片
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:app.icon]];
+            
+            UIImage *image = [UIImage imageWithData:data];
+            //图片下载了存入实体
+            app.image = image;
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                //局部刷新
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+                
+                //                [cell.imageView setImage:app.image];
+            }];
+            
+    }];
+        
+    [self.oPqueue addOperation:op];
 
-
+}
 
 
 

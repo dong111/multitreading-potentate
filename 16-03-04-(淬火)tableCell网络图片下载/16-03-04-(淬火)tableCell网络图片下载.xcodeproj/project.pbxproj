@@ -16,6 +16,8 @@
 		2BC7DC5E1C88FFA2006C823A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BC7DC5C1C88FFA2006C823A /* LaunchScreen.storyboard */; };
 		2BC7DC691C88FFA2006C823A /* _6_03_04_____tableCell______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DC681C88FFA2006C823A /* _6_03_04_____tableCell______Tests.m */; };
 		2BC7DC741C88FFA2006C823A /* _6_03_04_____tableCell______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DC731C88FFA2006C823A /* _6_03_04_____tableCell______UITests.m */; };
+		2BC7DC821C89017C006C823A /* apps.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BC7DC811C89017C006C823A /* apps.plist */; };
+		2BC7DC851C8901CF006C823A /* CDApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC7DC841C8901CF006C823A /* CDApp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		2BC7DC6F1C88FFA2006C823A /* 16-03-04-(淬火)tableCell网络图片下载UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "16-03-04-(淬火)tableCell网络图片下载UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BC7DC731C88FFA2006C823A /* _6_03_04_____tableCell______UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_6_03_04_____tableCell______UITests.m"; sourceTree = "<group>"; };
 		2BC7DC751C88FFA2006C823A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BC7DC811C89017C006C823A /* apps.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = apps.plist; sourceTree = "<group>"; };
+		2BC7DC831C8901CF006C823A /* CDApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDApp.h; sourceTree = "<group>"; };
+		2BC7DC841C8901CF006C823A /* CDApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDApp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +118,8 @@
 				2BC7DC5F1C88FFA2006C823A /* Info.plist */,
 				2BC7DC571C88FFA2006C823A /* _6_03_04_____tableCell______.xcdatamodeld */,
 				2BC7DC4B1C88FFA2006C823A /* Supporting Files */,
+				2BC7DC831C8901CF006C823A /* CDApp.h */,
+				2BC7DC841C8901CF006C823A /* CDApp.m */,
 			);
 			path = "16-03-04-(淬火)tableCell网络图片下载";
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 		2BC7DC4B1C88FFA2006C823A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2BC7DC811C89017C006C823A /* apps.plist */,
 				2BC7DC4C1C88FFA2006C823A /* main.m */,
 			);
 			name = "Supporting Files";
@@ -246,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BC7DC821C89017C006C823A /* apps.plist in Resources */,
 				2BC7DC5E1C88FFA2006C823A /* LaunchScreen.storyboard in Resources */,
 				2BC7DC5B1C88FFA2006C823A /* Assets.xcassets in Resources */,
 				2BC7DC561C88FFA2006C823A /* Main.storyboard in Resources */,
@@ -274,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BC7DC591C88FFA2006C823A /* _6_03_04_____tableCell______.xcdatamodeld in Sources */,
+				2BC7DC851C8901CF006C823A /* CDApp.m in Sources */,
 				2BC7DC531C88FFA2006C823A /* ViewController.m in Sources */,
 				2BC7DC501C88FFA2006C823A /* AppDelegate.m in Sources */,
 				2BC7DC4D1C88FFA2006C823A /* main.m in Sources */,
